@@ -1,4 +1,6 @@
 from setuptools import setup, find_packages
+import sys
+import os
 
 def _is_requirement(line):
     """Returns whether the line is a valid package requirement."""
