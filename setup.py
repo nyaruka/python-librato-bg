@@ -21,7 +21,7 @@ setup(
     tests_require=_read_requirements("requirements/tests.txt"),
 
     description="Background submitter for Librato events.",
-    long_description=open('README.rst').read(),
+    long_description=open('README.md').read(),
 
     author='Nyaruka Ltd',
     author_email='code@nyaruka.com',
