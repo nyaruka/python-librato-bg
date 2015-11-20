@@ -11,10 +11,13 @@ def _read_requirements(filename):
         contents = requirements_file.read()
     return [line.strip() for line in contents.splitlines() if _is_requirement(line)]
 
+# Don't import module here, since deps may not be installed
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'librato_bg'))
+from version import VERSION
 
 setup(
     name='librato_bg',
-    version=__import__('librato_bg').__version__,
+    version=VERSION,
     license="BSD",
 
     install_requires=_read_requirements("requirements/base.txt"),
