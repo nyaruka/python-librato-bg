@@ -27,7 +27,7 @@ class Client(object):
         if send:
             self.consumer.start()
 
-    def track(self, event, value, source):
+    def gauge(self, event, value, source):
         msg = {
             'event': event,
             'value': value,

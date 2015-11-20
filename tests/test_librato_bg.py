@@ -15,7 +15,7 @@ class TestBGSubmission(unittest.TestCase):
 
     def test_foo(self):
         for i in range(1000):
-            self.client.track('librato_bg.test', i, 'lagom')
+            self.client.gauge('librato_bg.test', i, 'lagom')
         self.client.flush()
 
 if __name__ == '__main__':

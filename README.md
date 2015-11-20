@@ -15,7 +15,7 @@ self.client = Client(user, token)
 
 # track as your normally would, params are event, value and source.
 # This is non-blocking, submission will take place in other thread
-self.client.track('user_clicked', 1, 'prod')
+self.client.gauge('user_clicked', 1, 'prod')
 
 # when exiting, flush to join threads and make sure everything is sent
 self.client.join()
