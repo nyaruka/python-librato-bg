@@ -26,7 +26,7 @@ setup(
     author='Nyaruka Ltd',
     author_email='code@nyaruka.com',
 
-    url='http://github.com/nyaruka/librato_bg',
+    url='http://github.com/nyaruka/python-librato-bg',
 
     include_package_data=True,
 
