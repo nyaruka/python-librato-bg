@@ -1,5 +1,4 @@
 import logging
-from six import string_types
 from librato_bg.consumer import Consumer
 
 try:
