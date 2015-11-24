@@ -1,45 +1,32 @@
-from setuptools import setup, find_packages
-import sys
 import os
+import sys
 
-def _is_requirement(line):
-    """Returns whether the line is a valid package requirement."""
-    line = line.strip()
-    return line and not line.startswith("#")
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
 
-def _read_requirements(filename):
-    """Parses a file for pip installation requirements."""
-    with open(filename) as requirements_file:
-        contents = requirements_file.read()
-    return [line.strip() for line in contents.splitlines() if _is_requirement(line)]
+# grab version directly
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'librato_bg'))
+from version import VERSION
+
+long_description = '''
+Provides an easy API to submit Librato metrics in a background thread.
+'''
 
 setup(
     name='librato_bg',
-    version='1.0.2',
-    license="BSD",
-
-    install_requires=_read_requirements("requirements/base.txt"),
-    tests_require=_read_requirements("requirements/tests.txt"),
-
-    description="Background submitter for Librato events.",
-    long_description=open('README.md').read(),
-
-    author='Nyaruka Ltd',
+    version=VERSION,
+    url='https://github.com/nyaruka/python-librato-bg',
+    author='Nyaruka',
     author_email='code@nyaruka.com',
-
-    url='http://github.com/nyaruka/python-librato-bg',
-
-    include_package_data=True,
-
-    packages=find_packages(),
-
-    zip_safe=False,
-    classifiers=[
-        'Development Status :: 5 - Production/Stable',
-        'Environment :: Web Environment',
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD License',
-        'Operating System :: OS Independent',
-        'Programming Language :: Python',
-    ]
+    maintainer='Nyaruka',
+    maintainer_email='code@nyaruka.com',
+    packages=['librato_bg'],
+    license='MIT License',
+    install_requires=[
+        'librato-metrics',
+    ],
+    description=long_description,
+    long_description=long_description
 )
