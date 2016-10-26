@@ -59,6 +59,7 @@ class Client(object):
         self.consumer.pause()
         self.consumer.join()
 
+
 def require(name, field, data_type):
     """Require that the named `field` has the right `data_type`"""
     if not isinstance(field, data_type):
