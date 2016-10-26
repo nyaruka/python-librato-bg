@@ -23,7 +23,6 @@ class MockConnection(object):
             pass
 
     def new_queue(self):
-        print("new_queue")
         return MockConnection.Queue(self.items)
 
 
