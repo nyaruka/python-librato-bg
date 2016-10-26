@@ -1,10 +1,10 @@
+from __future__ import unicode_literals
+
 import logging
+
+from six.moves import queue
 from librato_bg.consumer import Consumer
 
-try:
-    import queue
-except:
-    import Queue as queue
 
 class Client(object):
     """Create a new Librato BG client."""

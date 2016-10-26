@@ -1,21 +1,25 @@
 Librato BG
 ============
 
+[![Build Status](https://travis-ci.org/nyaruka/python-librato-bg.svg?branch=master)](https://travis-ci.org/nyaruka/python-librato-bg)
+[![Coverage Status](https://coveralls.io/repos/github/nyaruka/python-librato-bg/badge.svg?branch=master)](https://coveralls.io/github/nyaruka/python-librato-bg)
 
-Allows for submitting of librato events in a background thread, heavily inspired by segment.io's python library which does the same.
+Enables submitting of Librato events in a background thread. Heavily inspired by segment.io's python library which does 
+the same.
 
-Usage 
-------
+Usage
+-----
 
 ```python
 from librato_bg import Client
 
-# initialize with librato API tokens
-self.client = Client(user, token)
+# initialize with Librato API tokens
+client = Client(username, token)
 
 # track as your normally would, params are event, value and source.
 # This is non-blocking, submission will take place in other thread
-self.client.gauge('user_clicked', 1, 'prod')
+client.gauge('user_clicked', 1, 'prod')
 
 # when exiting, flush to join threads and make sure everything is sent
-self.client.join()
+client.join()
+```

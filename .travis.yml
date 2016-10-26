@@ -1,0 +1,17 @@
+language: python
+python:
+ - '2.7'
+ - '3.4'
+ - '3.5'
+sudo: false
+cache:
+  directories:
+  - $HOME/.cache/pip
+install:
+ - pip install -r requirements/base.txt
+ - pip install -r requirements/tests.txt
+script:
+ - nosetests --with-coverage --cover-erase --cover-package=librato_bg
+ - flake8
+after_success:
+ - coveralls
