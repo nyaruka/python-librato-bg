@@ -1,6 +1,10 @@
-from threading import Thread
-import logging
+from __future__ import unicode_literals
+
 import librato
+import logging
+
+from threading import Thread
+
 
 class Consumer(Thread):
     """Consumes the messages from the client's queue."""
@@ -10,7 +14,7 @@ class Consumer(Thread):
         """Create a consumer thread."""
         Thread.__init__(self)
         self.api = librato.connect(user, token)
-        self.daemon = True # set as a daemon so the program can exit
+        self.daemon = True  # set as a daemon so the program can exit
         self.upload_size = upload_size
         self.on_error = on_error
         self.queue = queue

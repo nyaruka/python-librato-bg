@@ -1,10 +1,10 @@
+from __future__ import unicode_literals
+
 import logging
+
+from six.moves import queue
 from librato_bg.consumer import Consumer
 
-try:
-    import queue
-except:
-    import Queue as queue
 
 class Client(object):
     """Create a new Librato BG client."""
@@ -58,6 +58,7 @@ class Client(object):
         """Ends the consumer thread once the queue is empty. Blocks execution until finished"""
         self.consumer.pause()
         self.consumer.join()
+
 
 def require(name, field, data_type):
     """Require that the named `field` has the right `data_type`"""
