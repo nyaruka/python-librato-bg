@@ -25,9 +25,42 @@ base_packages = _read_requirements("requirements/base.txt")
 test_packages = _read_requirements("requirements/tests.txt")
 
 
+# from https://gist.github.com/techtonik/4066623
+# This is necessary, because librato is indirectly imported in
+# librate_bg/__init__.py. But setup.py must be runnable without having the
+# dependencies installed.
+def get_version(relpath):
+    """Read version info from a file without importing it"""
+    from os.path import dirname, join
+
+    if '__file__' not in globals():
+        # Allow to use function interactively
+        root = '.'
+    else:
+        root = dirname(__file__)
+
+    # The code below reads text file with unknown encoding in
+    # in Python2/3 compatible way. Reading this text file
+    # without specifying encoding will fail in Python 3 on some
+    # systems (see http://goo.gl/5XmOH). Specifying encoding as
+    # open() parameter is incompatible with Python 2
+
+    # cp437 is the encoding without missing points, safe against:
+    #   UnicodeDecodeError: 'charmap' codec can't decode byte...
+
+    for line in open(join(root, relpath), 'rb'):
+        line = line.decode('cp437')
+        if '__version__' in line:
+            if '"' in line:
+                # __version__ = "0.9"
+                return line.split('"')[1]
+            elif "'" in line:
+                return line.split("'")[1]
+
+
 setup(
     name='librato_bg',
-    version=__import__('librato_bg').__version__,
+    version=get_version('librato_bg/__init__.py'),
     description="Enables submitting of Librato events in a background thread",
     long_description=long_description,
 
