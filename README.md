@@ -3,6 +3,7 @@ Librato BG
 
 [![Build Status](https://travis-ci.org/nyaruka/python-librato-bg.svg?branch=master)](https://travis-ci.org/nyaruka/python-librato-bg)
 [![Coverage Status](https://coveralls.io/repos/github/nyaruka/python-librato-bg/badge.svg?branch=master)](https://coveralls.io/github/nyaruka/python-librato-bg)
+[![PyPI Release](https://img.shields.io/pypi/v/librato_bg.svg)](https://pypi.python.org/pypi/librato_bg/)
 
 Enables submitting of Librato events in a background thread. Heavily inspired by segment.io's python library which does 
 the same.
